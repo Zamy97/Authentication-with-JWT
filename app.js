@@ -3,11 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const auth = require('./controllers/auth.js');
+const bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+auth(app)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,3 +42,11 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+// https://github.com/Product-College-Courses/BEW-1.2-Authentication-and-Associations/tree/master/08-Authentication-Sessions-vs-JWT#challenges-75-minutes
+// https://expressjs.com/en/starter/generator.html
+// https://medium.com/@maison.moa/using-jwt-json-web-tokens-to-authorize-users-and-protect-api-routes-3e04a1453c3e
+// https://github.com/Zamy97/Reddit-Project/blob/master/controllers/auth.js
+// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+// https://auth0.com/docs/security/store-tokens
+// 
